@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+    db:
+        image: mysql
+        ports:
+            - "33306:3306"
+        expose:
+            - "3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+        volumes:
+            - ./db/init:/docker-entrypoint-initdb.d
+            - ./db/data:/var/lib/mysql
+        container_name: flask_template
+
+    server:
+        build:
+            context: ./python/
+            args:
+                project_directory: "/template/"
+        ports:
+            - "5000:5000"
+        volumes:
+            - "./python/template:/projects"
+        environment:
+            TZ: "Asia/Tokyo"
+        container_name: flask_template
+

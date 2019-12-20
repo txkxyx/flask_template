@@ -1,0 +1,11 @@
+Flask
+flask-sqlalchemy
+Flask-Migrate
+flask-jwt-extended
+flask-cors
+cryptography
+PyMySQL
+flake8
+pyformat
+isort
+ptvsd
